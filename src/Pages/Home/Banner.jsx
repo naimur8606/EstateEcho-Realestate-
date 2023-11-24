@@ -16,7 +16,7 @@ const Banner = () => {
             <Carousel autoPlay infiniteLoop interval={3000} showStatus={false}>
                 {
                 sliders.map((slider, idx)=>
-                <div key={idx} className="h-72 md:h-96 lg:h-[600px]">
+                <div key={idx} className="h-72 md:h-96 lg:h-[550px]">
                     <img className="h-full"  src={slider} alt="" />
                 </div> 
                 )

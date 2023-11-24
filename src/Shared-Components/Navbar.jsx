@@ -1,4 +1,3 @@
-import { FaShoppingCart } from 'react-icons/fa'
 import { AiOutlineClose } from 'react-icons/ai'
 import { BsPerson, BsPersonX } from 'react-icons/bs'
 import { BiMenu } from 'react-icons/bi'
