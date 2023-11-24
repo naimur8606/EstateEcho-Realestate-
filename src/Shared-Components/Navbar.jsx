@@ -15,24 +15,6 @@ const Navbar = () => {
         { name: "Dashboard", path: "/dashboard", },
     ]
 
-    {/* <li>
-            {user ?
-                    <div className="flex items-center">
-                        {user?.photoURL ? <img className="rounded-[50%] h-8 mr-2" src={user?.photoURL} alt="" /> : <BsPerson className="text-2xl mr-1.5"></BsPerson>}<button onClick={SignOut}>Logout</button>
-                    </div> :
-                    <div className="flex items-center"><BsPersonX className="text-2xl mr-1.5"></BsPersonX>
-                        <NavLink
-                            to="/login"
-                            className={({ isActive, isPending }) =>
-                                isPending ? "pending" : isActive ? "text-[#2c2cff] border border-[#2c2cff] px-3 py-1 rounded-md" : ""
-                            }>
-                            Login
-                        </NavLink>
-                    </div>
-                }
-            </li> */}
-
-
     return (
         <div className="fixed top-0 z-50 w-full bg-black bg-opacity-50 max-w-6xl mx-auto py-2 md:py-4 px-3 flex justify-between items-center flex-row-reverse lg:flex-row">
             <img className='h-12' src="https://i.ibb.co/mTfvdVR/Esrate-Echo-logo.png" alt="" />
