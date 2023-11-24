@@ -1,0 +1,30 @@
+[
+    {
+        "propertyImage": "https://i.ibb.co/bzY2sLm/Advertisement-1.jpg",
+        "propertyLocation": "Tranquil Suburbia",
+        "priceRange": "$250,000 - $300,000",
+        "verificationStatus": "Verified",
+        "detailsButtonLink": "/property/details/1"
+      },
+      {
+        "propertyImage": "https://i.ibb.co/FJH08GL/Advertisement-2.jpg",
+        "propertyLocation": "Urban Oasis",
+        "priceRange": "$500,000 - $600,000",
+        "verificationStatus": "Verified",
+        "detailsButtonLink": "/property/details/2"
+      },
+      {
+        "propertyImage": "https://i.ibb.co/H4wCqjy/Advertisement-3.jpg",
+        "propertyLocation": "Coastal Retreat",
+        "priceRange": "$800,000 - $900,000",
+        "verificationStatus": "Verified",
+        "detailsButtonLink": "/property/details/3"
+      },
+      {
+        "propertyImage": "https://i.ibb.co/Lkbhjnj/Advertisement-4.jpg",
+        "propertyLocation": "Mountain Serenity",
+        "priceRange": "$350,000 - $400,000",
+        "verificationStatus": "Verified",
+        "detailsButtonLink": "/property/details/4"
+      }  
+]
