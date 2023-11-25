@@ -3,13 +3,13 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const Banner = () => {
     const sliders = [
+        "https://i.ibb.co/1brBr8Z/estate-banner-4.jpg",
+        "https://i.ibb.co/Wg4XS9Y/estate-banner-2.jpg",
+        "https://i.ibb.co/1sHZbMC/estate-banner-7.jpg",
         "https://i.ibb.co/Bt7byv9/estate-banner-5.jpg",
         "https://i.ibb.co/SRSfKR1/estate-banner-1.jpg",
-        "https://i.ibb.co/1sHZbMC/estate-banner-7.jpg",
         "https://i.ibb.co/dQ81QCL/estate-banner-3.jpg",
         "https://i.ibb.co/TT5hmLY/estate-banner-6.png",
-        "https://i.ibb.co/Wg4XS9Y/estate-banner-2.jpg",
-        "https://i.ibb.co/1brBr8Z/estate-banner-4.jpg"
     ]
     return (
         <div className="text-center">
