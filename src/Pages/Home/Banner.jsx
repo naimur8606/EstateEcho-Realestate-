@@ -12,11 +12,11 @@ const Banner = () => {
         "https://i.ibb.co/TT5hmLY/estate-banner-6.png",
     ]
     return (
-        <div className="text-center">
+        <div className="text-center mt-[64px] md:mt-[80px]">
             <Carousel autoPlay infiniteLoop interval={3000} showStatus={false}>
                 {
                 sliders.map((slider, idx)=>
-                <div key={idx} className="h-72 md:h-96 lg:h-[550px]">
+                <div key={idx} className="h-72 md:h-96 lg:h-[500px]">
                     <img className="h-full"  src={slider} alt="" />
                 </div> 
                 )
