@@ -1,0 +1,27 @@
+[
+    {
+      "reviewerName": "Emily Johnson",
+      "reviewerImage": "image_emily.jpg",
+      "reviewDescription": "Absolutely loved the tranquil atmosphere of the property. Perfect for a family looking for a peaceful home. The entire process was smooth, and the agent was incredibly helpful.",
+      "propertyTitle": "Tranquil Suburbia"
+    },
+    {
+      "reviewerName": "Alex Rodriguez",
+      "reviewerImage": "image_alex.jpg",
+      "reviewDescription": "Urban Oasis exceeded our expectations! The modern design and convenient location make it an ideal choice. The agent provided excellent service, and we couldn't be happier with our new home.",
+      "propertyTitle": "Urban Oasis"
+    },
+    {
+      "reviewerName": "Samantha Turner",
+      "reviewerImage": "image_samantha.jpg",
+      "reviewDescription": "Coastal Retreat is a dream come true! The view is breathtaking, and the amenities are top-notch. The buying process was efficient, and the agent was attentive to our needs.",
+      "propertyTitle": "Coastal Retreat"
+    },
+    {
+      "reviewerName": "Michael Williams",
+      "reviewerImage": "image_michael.jpg",
+      "reviewDescription": "Mountain Serenity is the perfect escape. The property offers stunning views, and the agent made the whole experience enjoyable. Highly recommend for those seeking a serene mountain home.",
+      "propertyTitle": "Mountain Serenity"
+    }
+  ]
+  
