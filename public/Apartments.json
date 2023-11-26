@@ -1,0 +1,103 @@
+[
+    {
+      "propertyTitle": "Luxury Central Loft",
+      "propertyType": "Apartment",
+      "propertyLocation": "Downtown Metropolis",
+      "agentName": "Jessica Anderson",
+      "agentImage": "agent_jessica.jpg",
+      "verificationStatus": "Verified",
+      "priceRange": "$700,000 - $800,000",
+      "propertyImage": "apartment1.jpg"
+    },
+    {
+      "propertyTitle": "Modern Riverside Penthouse",
+      "propertyType": "Apartment",
+      "propertyLocation": "Riverfront Views",
+      "agentName": "Michael Roberts",
+      "agentImage": "agent_michael.jpg",
+      "verificationStatus": "Verified",
+      "priceRange": "$900,000 - $1,000,000",
+      "propertyImage": "apartment2.jpg"
+    },
+    {
+      "propertyTitle": "Cosy Suburban Retreat",
+      "propertyType": "Apartment",
+      "propertyLocation": "Peaceful Suburbia",
+      "agentName": "Sophie Turner",
+      "agentImage": "agent_sophie.jpg",
+      "verificationStatus": "Verified",
+      "priceRange": "$500,000 - $600,000",
+      "propertyImage": "apartment3.jpg"
+    },
+    {
+      "propertyTitle": "Chic Urban Studio",
+      "propertyType": "Apartment",
+      "propertyLocation": "City Skyline",
+      "agentName": "Daniel Mitchell",
+      "agentImage": "agent_daniel.jpg",
+      "verificationStatus": "Verified",
+      "priceRange": "$350,000 - $400,000",
+      "propertyImage": "apartment4.jpg"
+    },
+    {
+      "propertyTitle": "Elegant High-Rise Residence",
+      "propertyType": "Apartment",
+      "propertyLocation": "Sky-High City Living",
+      "agentName": "Olivia Williams",
+      "agentImage": "agent_olivia.jpg",
+      "verificationStatus": "Verified",
+      "priceRange": "$1,200,000 - $1,400,000",
+      "propertyImage": "apartment5.jpg"
+    },
+    {
+      "propertyTitle": "Seaside Luxury Apartment",
+      "propertyType": "Apartment",
+      "propertyLocation": "Oceanfront Bliss",
+      "agentName": "Andrew Collins",
+      "agentImage": "agent_andrew.jpg",
+      "verificationStatus": "Verified",
+      "priceRange": "$1,500,000 - $1,700,000",
+      "propertyImage": "apartment6.jpg"
+    },
+    {
+      "propertyTitle": "Sunny Loft with Terrace",
+      "propertyType": "Apartment",
+      "propertyLocation": "Sunlit Urban Oasis",
+      "agentName": "Emma Thompson",
+      "agentImage": "agent_emma.jpg",
+      "verificationStatus": "Verified",
+      "priceRange": "$600,000 - $700,000",
+      "propertyImage": "apartment7.jpg"
+    },
+    {
+      "propertyTitle": "Historic District Charm",
+      "propertyType": "Apartment",
+      "propertyLocation": "Quaint Historical Area",
+      "agentName": "Christopher Clark",
+      "agentImage": "agent_christopher.jpg",
+      "verificationStatus": "Verified",
+      "priceRange": "$450,000 - $500,000",
+      "propertyImage": "apartment8.jpg"
+    },
+    {
+      "propertyTitle": "Panoramic City Views",
+      "propertyType": "Apartment",
+      "propertyLocation": "Skyscraper Living",
+      "agentName": "Isabella Garcia",
+      "agentImage": "agent_isabella.jpg",
+      "verificationStatus": "Verified",
+      "priceRange": "$800,000 - $900,000",
+      "propertyImage": "apartment9.jpg"
+    },
+    {
+      "propertyTitle": "Tranquil Garden Apartment",
+      "propertyType": "Apartment",
+      "propertyLocation": "Greenery Retreat",
+      "agentName": "William Turner",
+      "agentImage": "agent_william.jpg",
+      "verificationStatus": "Verified",
+      "priceRange": "$700,000 - $800,000",
+      "propertyImage": "apartment10.jpg"
+    }
+  ]
+  
