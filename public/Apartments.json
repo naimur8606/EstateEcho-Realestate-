@@ -4,60 +4,60 @@
       "propertyType": "Apartment",
       "propertyLocation": "Downtown Metropolis",
       "agentName": "Jessica Anderson",
-      "agentImage": "agent_jessica.jpg",
+      "agentImage": "https://i.ibb.co/yFs0bgB/cl3.jpg",
       "verificationStatus": "Verified",
       "priceRange": "$700,000 - $800,000",
-      "propertyImage": "apartment1.jpg"
+      "propertyImage": "https://i.ibb.co/FJH08GL/Advertisement-2.jpg"
     },
     {
       "propertyTitle": "Modern Riverside Penthouse",
       "propertyType": "Apartment",
       "propertyLocation": "Riverfront Views",
       "agentName": "Michael Roberts",
-      "agentImage": "agent_michael.jpg",
+      "agentImage": "https://i.ibb.co/yFs0bgB/cl3.jpg",
       "verificationStatus": "Verified",
       "priceRange": "$900,000 - $1,000,000",
-      "propertyImage": "apartment2.jpg"
+      "propertyImage": "https://i.ibb.co/bzY2sLm/Advertisement-1.jpg"
     },
     {
       "propertyTitle": "Cosy Suburban Retreat",
       "propertyType": "Apartment",
       "propertyLocation": "Peaceful Suburbia",
       "agentName": "Sophie Turner",
-      "agentImage": "agent_sophie.jpg",
+      "agentImage": "https://i.ibb.co/qyrDwh4/cl2.jpg",
       "verificationStatus": "Verified",
       "priceRange": "$500,000 - $600,000",
-      "propertyImage": "apartment3.jpg"
+      "propertyImage": "https://i.ibb.co/Lkbhjnj/Advertisement-4.jpg"
     },
     {
       "propertyTitle": "Chic Urban Studio",
       "propertyType": "Apartment",
       "propertyLocation": "City Skyline",
       "agentName": "Daniel Mitchell",
-      "agentImage": "agent_daniel.jpg",
+      "agentImage": "https://i.ibb.co/yFs0bgB/cl3.jpg",
       "verificationStatus": "Verified",
       "priceRange": "$350,000 - $400,000",
-      "propertyImage": "apartment4.jpg"
+      "propertyImage": "https://i.ibb.co/bzY2sLm/Advertisement-1.jpg"
     },
     {
       "propertyTitle": "Elegant High-Rise Residence",
       "propertyType": "Apartment",
       "propertyLocation": "Sky-High City Living",
       "agentName": "Olivia Williams",
-      "agentImage": "agent_olivia.jpg",
+      "agentImage": "https://i.ibb.co/qyrDwh4/cl2.jpg",
       "verificationStatus": "Verified",
       "priceRange": "$1,200,000 - $1,400,000",
-      "propertyImage": "apartment5.jpg"
+      "propertyImage": "https://i.ibb.co/FJH08GL/Advertisement-2.jpg"
     },
     {
       "propertyTitle": "Seaside Luxury Apartment",
       "propertyType": "Apartment",
       "propertyLocation": "Oceanfront Bliss",
       "agentName": "Andrew Collins",
-      "agentImage": "agent_andrew.jpg",
+      "agentImage": "https://i.ibb.co/qyrDwh4/cl2.jpg",
       "verificationStatus": "Verified",
       "priceRange": "$1,500,000 - $1,700,000",
-      "propertyImage": "apartment6.jpg"
+      "propertyImage": "https://i.ibb.co/Lkbhjnj/Advertisement-4.jpg"
     },
     {
       "propertyTitle": "Sunny Loft with Terrace",
