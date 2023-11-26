@@ -1,7 +1,7 @@
-import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, GithubAuthProvider } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, GithubAuthProvider, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
-import auth from "./Firebase/FirebaseConfig";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
+import auth from "./Firebase/FirebaseConfig";
 
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
@@ -37,6 +37,11 @@ const AuthProvider = ({ children }) => {
     }
     const setUserLocation = (userPath) => {
         setUserCurrentPath(userPath)
+    }
+    const updateUser = (name, photo) =>{
+        updateProfile(auth.currentUser, {
+            displayName: name, photoURL: photo
+          })
     }
 
     useEffect(() => {
@@ -79,7 +84,8 @@ const AuthProvider = ({ children }) => {
         setUserLocation,
         githubLogin,
         userData,
-        setUserData
+        setUserData,
+        updateUser
     }
     return (
         <AuthContext.Provider value={authInfo}>

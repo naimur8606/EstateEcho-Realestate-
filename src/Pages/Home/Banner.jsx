@@ -1,7 +1,10 @@
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import useAuth from "../../Hooks/useAuth";
 
 const Banner = () => {
+    const {user} = useAuth()
+    console.log(user)
     const sliders = [
         "https://i.ibb.co/1brBr8Z/estate-banner-4.jpg",
         "https://i.ibb.co/Wg4XS9Y/estate-banner-2.jpg",
