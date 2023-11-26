@@ -7,6 +7,7 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import useAuth from "../../Hooks/useAuth";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import SocialLogin from "./SocialLogin";
 const image_hosting_key = import.meta.env.VITE_Image_Hosting;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
@@ -118,7 +119,7 @@ const CreateUser = () => {
                     </form>
                     <div className="p-8">
                         <p className="text-xl">Have already account <Link to={"/login"} className="text-blue-600 underline">Login</Link></p>
-                        {/* <SocialLogin></SocialLogin> */}
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>

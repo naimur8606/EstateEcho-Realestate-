@@ -5,10 +5,11 @@ import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import SocialLogin from "./SocialLogin";
 
 const Login = () => {
     const { register, handleSubmit } = useForm();
-    const { userLogin, setUserLocation } = useAuth()
+    const { user, userLogin, setUserLocation } = useAuth()
     const axiosPublic = useAxiosPublic()
     const [useAlert, setUseAlert] = useState(true)
     const location = useLocation()
@@ -17,9 +18,9 @@ const Login = () => {
     const navigate = useNavigate()
     const onSubmit = async (data) => {
         console.log(data)
-            const name = data.name;
+            const name = user?.displayName || "user";
             const email = data.email;
-            const photoUrl = data.display_url || "";
+            const photoUrl = user?.photoURL || "";
             const password = data.password;
             console.log(email, password)
             userLogin(email, password)
@@ -90,7 +91,7 @@ const Login = () => {
                     </form>
                     <div className="p-8">
                     <p className="text-xl">Are you new here <Link to={"/registration"} className="text-blue-600 underline">Registration</Link> account</p>
-                        {/* <SocialLogin></SocialLogin> */}
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
