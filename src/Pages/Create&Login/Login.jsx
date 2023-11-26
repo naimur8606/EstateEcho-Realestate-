@@ -62,8 +62,8 @@ const Login = () => {
             <div className="flex w-full flex-col justify-between lg:flex-row-reverse my-5">
                 <img className="md:w-2/3 lg:w-2/5 mx-auto" src='https://i.ibb.co/0jhnKK2/login.gif' alt="" />
                 <div className="shadow-2xl md:w-2/3 lg:w-1/3 mx-auto mt-10 lg:mt-0 p-5 rounded-lg">
-                    <h1 className="text-center text-5xl font-bold">Register now!</h1>
-                    <form onSubmit={handleSubmit(onSubmit)} className="">
+                    <h1 className="text-center text-5xl font-bold">Login now!</h1>
+                    <form onSubmit={handleSubmit(onSubmit)} className="mt-5">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email*</span>
@@ -77,11 +77,11 @@ const Login = () => {
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Password</span>
+                                <span className="label-text">Password*</span>
                             </label>
                             <input
                                 type="password"
-                                placeholder="Create Password"
+                                placeholder="Enter Password"
                                 {...register('password', { required: true })}
                                 className="input input-bordered w-full" />
                         </div>

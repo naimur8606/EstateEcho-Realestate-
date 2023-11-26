@@ -2,7 +2,7 @@ import { useState } from "react";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import CommonTitle from "../../Shared-Components/CommonTitle";
 import { FaLocationDot } from "react-icons/fa6";
-import { MdOutlineVerified, MdVerified } from "react-icons/md";
+import { MdVerified } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const Advertisement = () => {
