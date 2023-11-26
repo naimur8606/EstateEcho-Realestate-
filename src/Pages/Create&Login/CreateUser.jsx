@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import useAuth from "../../Hooks/useAuth";
 import { useState } from "react";
-import AddItems from "./fgf";
 import { useForm } from "react-hook-form";
 const image_hosting_key = import.meta.env.VITE_Image_Hosting;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -69,63 +68,60 @@ const CreateUser = () => {
         }
     };
     return (
-        <div>
-            <div className="flex items-center min-h-screen w-[97%] lg:w-full mx-auto">
-                <div className="flex w-full flex-col justify-between lg:flex-row-reverse my-5">
-                    <img className="md:w-2/3 lg:w-2/5 mx-auto" src='https://i.ibb.co/0jhnKK2/login.gif' alt="" />
-                    <div className="shadow-2xl md:w-2/3 lg:w-1/3 mx-auto mt-10 lg:mt-0 p-5 rounded-lg">
-                        <h1 className="text-center text-5xl font-bold">Register now!</h1>
-                        <form onSubmit={handleSubmit(onSubmit)} className="">
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Name*</span>
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder="Your Name"
-                                    {...register('name', { required: true })}
-                                    required
-                                    className="input input-bordered w-full" />
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Email*</span>
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder="Your Email"
-                                    {...register('email', { required: true })}
-                                    required
-                                    className="input input-bordered w-full" />
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Image</span>
-                                </label>
-                                <input {...register('image', { required: true })} type="file" className="file-input w-full max-w-xs" />
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Password</span>
-                                </label>
-                                <input
-                                    type="password"
-                                    placeholder="Create Password"
-                                    {...register('password', { required: true })}
-                                    className="input input-bordered w-full" />
-                            </div>
-                            <div className="form-control mt-6">
-                                <button type="submit" className="btn btn-primary">Create Account</button>
-                            </div>
-                        </form>
-                        <div className="p-8">
-                            <p className="text-xl">Have already account <Link to={"/login"} className="text-blue-600 underline">Login</Link></p>
-                            {/* <SocialLogin></SocialLogin> */}
+        <div className="flex items-center min-h-screen w-[97%] lg:w-full mx-auto">
+            <div className="flex w-full flex-col justify-between lg:flex-row-reverse my-5">
+                <img className="md:w-2/3 lg:w-2/5 mx-auto" src='https://i.ibb.co/0jhnKK2/login.gif' alt="" />
+                <div className="shadow-2xl md:w-2/3 lg:w-1/3 mx-auto mt-10 lg:mt-0 p-5 rounded-lg">
+                    <h1 className="text-center text-5xl font-bold">Register now!</h1>
+                    <form onSubmit={handleSubmit(onSubmit)} className="">
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Name*</span>
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Your Name"
+                                {...register('name', { required: true })}
+                                required
+                                className="input input-bordered w-full" />
                         </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Email*</span>
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Your Email"
+                                {...register('email', { required: true })}
+                                required
+                                className="input input-bordered w-full" />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Image</span>
+                            </label>
+                            <input {...register('image', { required: true })} type="file" className="file-input w-full max-w-xs" />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Password</span>
+                            </label>
+                            <input
+                                type="password"
+                                placeholder="Create Password"
+                                {...register('password', { required: true })}
+                                className="input input-bordered w-full" />
+                        </div>
+                        <div className="form-control mt-6">
+                            <button type="submit" className="btn btn-primary">Create Account</button>
+                        </div>
+                    </form>
+                    <div className="p-8">
+                        <p className="text-xl">Have already account <Link to={"/login"} className="text-blue-600 underline">Login</Link></p>
+                        {/* <SocialLogin></SocialLogin> */}
                     </div>
                 </div>
             </div>
-            <AddItems></AddItems>
         </div>
     );
 };
