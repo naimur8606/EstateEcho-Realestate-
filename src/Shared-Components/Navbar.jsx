@@ -2,12 +2,38 @@ import { AiOutlineClose } from 'react-icons/ai'
 import { BsPerson, BsPersonX } from 'react-icons/bs'
 import { BiMenu } from 'react-icons/bi'
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Navbar = () => {
+    const location = useLocation()?.pathname
+    const { user, logOut } = useContext(AuthContext)
     const [menu, setMenu] = useState(false)
-    const location = useLocation()?.pathname;
-    const user = true
+    // const [cart, refetch] = useCart()
+    // console.log(user, user?.photoURL, cart)
+    // useEffect(()=>{
+    //     refetch()
+    // },[user?.email, refetch])
+    const SignOut = () => {
+        logOut()
+            .then(
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Logout Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                })
+            )
+            .catch(error => {
+                Swal.fire({
+                    title: 'Warning!',
+                    text: `${error.message}`,
+                    icon: 'warning',
+                    confirmButtonText: 'Ok'
+                })
+            });
+    }
     const navItems = [
         { name: "Home", path: "/", },
         { name: "All Properties", path: "/properties", },
@@ -38,7 +64,7 @@ const Navbar = () => {
                 <li>
             {user ?
                     <div className="flex items-center">
-                        {user?.photoURL ? <img className="rounded-[50%] h-8 mr-2" src={user?.photoURL} alt="" /> : <BsPerson className="text-2xl mr-1.5"></BsPerson>}<button >Logout</button>
+                        {user?.photoURL ? <img className="rounded-[50%] h-8 mr-2" src={user?.photoURL} alt="" /> : <BsPerson className="text-2xl mr-1.5"></BsPerson>}<button onClick={SignOut} >Logout</button>
                     </div> :
                     <div className="flex items-center"><BsPersonX className="text-2xl mr-1.5"></BsPersonX>
                         <NavLink
