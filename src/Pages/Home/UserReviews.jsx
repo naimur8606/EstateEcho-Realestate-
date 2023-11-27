@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
@@ -12,11 +12,13 @@ import CommonTitle from '../../Shared-Components/CommonTitle';
 const UserReviews = () => {
     const axiosPublic = useAxiosPublic()
     const [reviews, setReviews] = useState([])
-    axiosPublic('/Reviews.json')
+    useEffect(()=>{
+        axiosPublic('/Reviews')
         .then(res => setReviews(res.data))
 
+    },[axiosPublic])
     const slider = reviews?.map((item, idx) =>
-        <SwiperSlide key={idx} className='text-center shadow-md p-5 font-medium rounded-md'>
+        <SwiperSlide key={idx} className='text-center my-1 shadow-md p-5 font-medium rounded-md'>
             <img className='h-36 w-36 mx-auto rounded-[50%] mb-5' src={item?.reviewerImage} alt="" />
             <h4 className='text-2xl'><span className='font-normal'>Reviewer:</span> {item?.reviewerName}</h4>
             <h5 className='text-xl my-1'><span className='font-normal'>Property Title:</span> {item?.propertyTitle}</h5>

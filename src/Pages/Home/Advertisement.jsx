@@ -9,7 +9,7 @@ const Advertisement = () => {
     const axiosPublic = useAxiosPublic()
     const [advertisement, setAdvertisement] = useState([])
     useEffect(() => {
-        axiosPublic('/Advertisement.json')
+        axiosPublic('/Advertisement')
             .then(res => setAdvertisement(res.data))
     }, [axiosPublic])
     return (

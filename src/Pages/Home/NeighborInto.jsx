@@ -1,5 +1,5 @@
 import CommonTitle from "../../Shared-Components/CommonTitle";
-import { GiSchoolOfFish, GiSoundOff } from 'react-icons/gi'
+import { GiSoundOff } from 'react-icons/gi'
 import { FaPeopleGroup, } from 'react-icons/fa6'
 import { MdOutlineSecurity, MdSportsCricket } from 'react-icons/md'
 import { FaCar, FaSchool } from 'react-icons/fa'

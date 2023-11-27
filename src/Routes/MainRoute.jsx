@@ -5,6 +5,7 @@ import CreateUser from "../Pages/Create&Login/CreateUser";
 import Login from "../Pages/Create&Login/Login";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Properties from "../Pages/AllProperties/Properties";
+import PropertyDetails from "../Pages/AllProperties/PropertyDetails";
 
 const router = createBrowserRouter([
     {
@@ -19,6 +20,11 @@ const router = createBrowserRouter([
         {
           path:"properties",
           element:<Properties></Properties>
+        },
+        {
+          path:"properties/:id",
+          element:<PropertyDetails></PropertyDetails>,
+          loader: ({params})=>fetch(`http://localhost:5000/Properties/${params?.id}`)
         },
       ]
     },
