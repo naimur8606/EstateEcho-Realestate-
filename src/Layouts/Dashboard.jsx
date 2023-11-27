@@ -3,9 +3,11 @@ import { NavLink, Outlet } from "react-router-dom";
 import { useState } from "react";
 import { BiMenu, } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
+import useAuth from "../Hooks/useAuth";
 
 
 const Dashboard = () => {
+    const {user} = useAuth()
     const [menu, setMenu] = useState(false)
     const isAdmin = false;
     return (
@@ -36,7 +38,7 @@ const Dashboard = () => {
                             :
                             <>
                                 <li>
-                                    <NavLink onClick={() => setMenu(false)} to="/dashboard"><FaUser></FaUser>My Profile</NavLink>
+                                    <NavLink onClick={() => setMenu(false)} to={`/dashboard/${user?.email}`}><FaUser></FaUser>My Profile</NavLink>
                                 </li>
                                 <li>
                                     <NavLink onClick={() => setMenu(false)} to={"/dashboard/wishlist"}><FaList></FaList>Wishlist</NavLink>

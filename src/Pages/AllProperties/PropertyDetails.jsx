@@ -4,10 +4,47 @@ import { useLoaderData } from "react-router-dom";
 import SpecificPropertyReview from "./SpecificPropertyReview";
 import CommonTitle from "../../Shared-Components/CommonTitle";
 import AddReview from "./AddReview";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
+import useAuth from "../../Hooks/useAuth";
 
 const PropertyDetails = () => {
+    const {user} = useAuth()
     const property = useLoaderData()
-    console.log(property)
+    const axiosPublic = useAxiosPublic()
+    // console.log(property)
+    const handleWishList = () => {
+        const item = {
+            PropertyId : property?._id,
+            userEmail : user?.email,
+            propertyImage: property?.propertyImage,
+            propertyTitle: property?.propertyTitle,
+            propertyLocation: property?.propertyLocation,
+            agentName: property?.agentName,
+            agentImage: property?.agentImage,
+            verificationStatus: property?.verificationStatus,
+            priceRange: property?.priceRange
+        }
+        axiosPublic.post('/Wishlist', item)
+            .then(data => {
+                if (data.data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Apartment add on Your WishList',
+                        icon: 'success',
+                        confirmButtonText: 'Yaaah'
+                    })
+                }else{
+                    Swal.fire({
+                        title: 'Warning!',
+                        text: 'You are already select it..!',
+                        icon: 'warning',
+                        confirmButtonText: 'Ok'
+                    })
+                }
+            })
+    }
+
     return (
         <div className="mt-[64px] md:mt-[80px]">
             <div className="flex flex-col lg:flex-row justify-between lg:items-center lg:py-5">
@@ -29,16 +66,16 @@ const PropertyDetails = () => {
                         <p>Agent: {property?.agentName}</p>
                         <img className="h-10 w-10 rounded-[50%]" src={property?.agentImage} alt="" />
                     </div>
-                    <button className="bg-[#7dd321] hover:bg-black px-6 py-2 rounded-md font-semibold text-white text-xl">Add to wishlist</button>
+                    <button onClick={handleWishList} className="bg-[#7dd321] hover:bg-black px-6 py-2 rounded-md font-semibold text-white text-xl">Add to wishlist</button>
                 </div>
             </div>
             <p className="w-[97%] lg:w-full mx-auto"><span className="text-xl font-bold ">Description:</span> {property?.propertyDescription}</p>
 
             <div className="w-[97%] lg:w-full mx-auto my-4">
                 <CommonTitle title={"Review"}></CommonTitle>
-            <SpecificPropertyReview></SpecificPropertyReview>
+                <SpecificPropertyReview></SpecificPropertyReview>
             </div>
-            <AddReview></AddReview>
+            <AddReview id={property?._id} title={property?.propertyTitle}></AddReview>
         </div>
     );
 };

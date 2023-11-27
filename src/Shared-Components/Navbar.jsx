@@ -37,7 +37,7 @@ const Navbar = () => {
     const navItems = [
         { name: "Home", path: "/", },
         { name: "All Properties", path: "/properties", },
-        { name: "Dashboard", path: "/dashboard", },
+        { name: "Dashboard", path: `/dashboard/${user?.email}`, },
     ]
 
     return (

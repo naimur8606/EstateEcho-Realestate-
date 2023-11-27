@@ -1,10 +1,48 @@
+import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useAuth from "../../Hooks/useAuth";
+import { useRef } from 'react';
 
-const AddReview = () => {
+const AddReview = ({ id, title }) => {
+    const axiosPublic = useAxiosPublic()
+    const {user} = useAuth()
+    const formRef = useRef(null);
+    console.log(user?.displayName)
+    const handleReview = e => {
+        e.preventDefault()
+        const reviewDescription = e.target.review.value;
+        const review = {
+            reviewerName: user?.displayName,
+            reviewerEmail: user?.email,
+            reviewerImage: user?.photoURL,
+            reviewDescription,
+            propertyTitle: title,
+            propertyId: id,
+        }
+
+        axiosPublic.post('/Reviews', review)
+            .then(data => {
+                console.log(data);
+                if (data.data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Review Created Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Yaaah'
+                    })
+                    if (formRef.current) {
+                        formRef.current.reset();
+                    }
+                }
+            })
+    }
     return (
         <div className="w-[97%] lg:w-full mx-auto mb-5">
-            <h1 className="text-2xl font-bold mb-2">Create A Review:</h1>
-            <textarea placeholder="Write a review..." className="p-1 w-full border border-[#8bff11] rounded-md" name="" id="" cols="" rows="5"></textarea>
-            <button className="my-2 bg-[#7dd321] hover:bg-black px-6 py-2 rounded-md font-semibold text-white text-xl">Add Review</button>
+            <form ref={formRef} onSubmit={handleReview}>
+                <h1 className="text-2xl font-bold mb-2">Create A Review:</h1>
+                <textarea placeholder="Write a review..." className="p-2 w-full border border-[#8bff11] rounded-md" name="review" id="" cols="" rows="5"></textarea>
+                <button type="submit" className="my-2 bg-[#7dd321] hover:bg-black px-6 py-2 rounded-md font-semibold text-white text-xl">Add Review</button>
+            </form>
         </div>
     );
 };

@@ -8,6 +8,7 @@ import Properties from "../Pages/AllProperties/Properties";
 import PropertyDetails from "../Pages/AllProperties/PropertyDetails";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layouts/Dashboard";
+import UserProfile from "../Pages/Dashboard/UserProfile";
 
 const router = createBrowserRouter([
     {
@@ -42,7 +43,11 @@ const router = createBrowserRouter([
       path:'/dashboard',
       element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children:[
-
+        {
+          path:'/dashboard/:email',
+          element:<UserProfile></UserProfile>,
+          loader:({params})=>fetch(`http://localhost:5000/users/${params?.email}`)
+        }
       ]
     },
   ]);
