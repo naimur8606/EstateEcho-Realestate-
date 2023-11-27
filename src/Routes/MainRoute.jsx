@@ -6,6 +6,8 @@ import Login from "../Pages/Create&Login/Login";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Properties from "../Pages/AllProperties/Properties";
 import PropertyDetails from "../Pages/AllProperties/PropertyDetails";
+import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../Layouts/Dashboard";
 
 const router = createBrowserRouter([
     {
@@ -19,11 +21,11 @@ const router = createBrowserRouter([
         },
         {
           path:"properties",
-          element:<Properties></Properties>
+          element:<PrivateRoute><Properties></Properties></PrivateRoute>
         },
         {
           path:"properties/:id",
-          element:<PropertyDetails></PropertyDetails>,
+          element:<PrivateRoute><PropertyDetails></PropertyDetails></PrivateRoute>,
           loader: ({params})=>fetch(`http://localhost:5000/Properties/${params?.id}`)
         },
       ]
@@ -35,6 +37,13 @@ const router = createBrowserRouter([
     {
       path:'/Login',
       element:<Login></Login>
+    },
+    {
+      path:'/dashboard',
+      element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+      children:[
+
+      ]
     },
   ]);
   export default router;
