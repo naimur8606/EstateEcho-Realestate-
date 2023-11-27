@@ -18,23 +18,23 @@ const Login = () => {
     const navigate = useNavigate()
     const onSubmit = async (data) => {
         console.log(data)
-            const name = user?.displayName || "user";
-            const email = data.email;
-            const photoUrl = user?.photoURL || "";
-            const password = data.password;
-            console.log(email, password)
-            userLogin(email, password)
+        const email = data.email;
+        const password = data.password;
+        console.log(email, password)
+        userLogin(email, password)
             .then(() => {
                 const status = "user";
-                    const user = { name, email, photoUrl, status };
-                    axiosPublic.post('/users', user)
-                        .then(res => res.json())
-                        .then(data => {
-                            console.log(data);
-                            if (data.insertedId) {
-                                setUseAlert(true)
-                            }
-                        })
+                const name = user?.displayName;
+                const photoURL = user?.photoURL;
+                const DatabaseUser = { name, email, photoURL, status };
+                axiosPublic.post('/users', DatabaseUser)
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.insertedId) {
+                            setUseAlert(true)
+                        }
+                    })
                 if (useAlert) {
                     Swal.fire({
                         title: 'Success!',
@@ -44,7 +44,7 @@ const Login = () => {
                     })
                     navigate(State?.location ? State?.location : "/")
                 }
-                
+
             }
             )
             .catch(error => {
@@ -55,7 +55,7 @@ const Login = () => {
                     confirmButtonText: 'Ok'
                 })
             });
-        
+
     };
     return (
         <div className="flex items-center min-h-screen w-[97%] lg:w-full mx-auto">
@@ -90,7 +90,7 @@ const Login = () => {
                         </div>
                     </form>
                     <div className="p-8">
-                    <p className="text-xl">Are you new here <Link to={"/registration"} className="text-blue-600 underline">Registration</Link> account</p>
+                        <p className="text-xl">Are you new here <Link to={"/registration"} className="text-blue-600 underline">Registration</Link> account</p>
                         <SocialLogin></SocialLogin>
                     </div>
                 </div>
