@@ -1,7 +1,7 @@
-import { FaAd, FaBook, FaCalculator, FaHome, FaList, FaListAlt, FaShoppingBasket, FaShoppingCart, FaUser, FaUtensils } from "react-icons/fa";
+import { FaAd, FaBook, FaHome, FaList, FaListAlt, FaShoppingCart, FaUser, FaUtensils } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import { useState } from "react";
-import { BiMenu, BiVoicemail } from "react-icons/bi";
+import { BiMenu, } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
 
 
@@ -35,7 +35,7 @@ const Dashboard = () => {
                             </>
                             :
                             <>
-                                {/* <li>
+                                <li>
                                     <NavLink onClick={() => setMenu(false)} to="/dashboard"><FaUser></FaUser>My Profile</NavLink>
                                 </li>
                                 <li>
@@ -46,7 +46,7 @@ const Dashboard = () => {
                                 </li>
                                 <li>
                                     <NavLink onClick={() => setMenu(false)} to={"/dashboard/myReview"}><FaAd></FaAd>My Review</NavLink>
-                                </li> */}
+                                </li>
                             </>
                     }
                     <p className="divider"></p>
