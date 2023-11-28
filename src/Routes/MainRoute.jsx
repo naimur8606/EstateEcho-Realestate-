@@ -9,11 +9,13 @@ import PropertyDetails from "../Pages/AllProperties/PropertyDetails";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layouts/Dashboard";
 import UserProfile from "../Pages/Dashboard/UserProfile";
-import WishList from "../Pages/Dashboard/WishList";
-import MakeOffer from "../Pages/Dashboard/MakeOffer";
-import BoughtProperties from "../Pages/Dashboard/BoughtProperties";
-import MyReviews from "../Pages/Dashboard/MyReviews";
-import AddProperty from "../Pages/Dashboard/AddProperty";
+import WishList from "../Pages/Dashboard/User/WishList";
+import MakeOffer from "../Pages/Dashboard/User/MakeOffer";
+import BoughtProperties from "../Pages/Dashboard/User/BoughtProperties";
+import MyReviews from "../Pages/Dashboard/User/MyReviews";
+import AddProperty from "../Pages/Dashboard/Agent/AddProperty";
+import MyAddedProperties from "../Pages/Dashboard/Agent/MyAddedProperties";
+import UpdateProperty from "../Pages/Dashboard/Agent/UpdateProperty";
 
 const router = createBrowserRouter([
     {
@@ -77,6 +79,15 @@ const router = createBrowserRouter([
         {
           path:'/dashboard/addProperty',
           element:<AddProperty></AddProperty> ,
+        },
+        {
+          path:'/dashboard/addedProperty',
+          element:<MyAddedProperties></MyAddedProperties> ,
+        },
+        {
+          path:'/dashboard/updateProperty/:id',
+          element:<UpdateProperty></UpdateProperty> ,
+          loader:({params})=>fetch(`http://localhost:5000/Properties/${params?.id}`)
         },
       ]
     },

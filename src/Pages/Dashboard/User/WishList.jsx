@@ -1,9 +1,9 @@
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdVerified } from "react-icons/md";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-import useWishlist from "../../Hooks/useWishlist";
+import useWishlist from "../../../Hooks/useWishlist";
 
 const WishList = () => {
     const [wishlist, refetch] = useWishlist()

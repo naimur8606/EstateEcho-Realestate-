@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { FaLocationDot } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import useAuth from "../../Hooks/useAuth";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import useAuth from "../../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 const image_hosting_key = import.meta.env.VITE_Image_Hosting;
@@ -28,10 +28,11 @@ const AddProperty = () => {
                 propertyLocation: data.location,
                 agentName: databaseUser.name,
                 agentImage: databaseUser.photoURL,
-                verificationStatus: "pending",
+                verificationStatus: "Pending",
                 priceRange: data.price,
                 propertyImage: res.data.data.display_url,
-                propertyDescription: data.description
+                propertyDescription: data.description,
+                agentEmail:databaseUser.email
             }
             axiosPublic.post('/Properties', property)
             .then(data => {

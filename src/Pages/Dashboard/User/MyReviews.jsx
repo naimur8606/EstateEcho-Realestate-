@@ -1,7 +1,7 @@
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { FaTrash } from "react-icons/fa";
-import useReviews from "../../Hooks/useReview";
+import useReviews from "../../../Hooks/useReview";
 
 const MyReviews = () => {
     const [reviews, refetch] = useReviews()
