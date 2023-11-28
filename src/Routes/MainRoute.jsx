@@ -11,6 +11,7 @@ import Dashboard from "../Layouts/Dashboard";
 import UserProfile from "../Pages/Dashboard/UserProfile";
 import WishList from "../Pages/Dashboard/WishList";
 import MakeOffer from "../Pages/Dashboard/MakeOffer";
+import BoughtProperties from "../Pages/Dashboard/BoughtProperties";
 
 const router = createBrowserRouter([
     {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
           path:'/dashboard/makeOffer/:id',
           element:<MakeOffer></MakeOffer> ,
           loader:({params})=>fetch(`http://localhost:5000/Wishlist/makeOffer/${params?.id}`)
+        },
+        {
+          path:'/dashboard/boughtProperties',
+          element:<BoughtProperties></BoughtProperties> ,
         },
       ]
     },
