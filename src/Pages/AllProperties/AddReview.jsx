@@ -3,13 +3,22 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import useAuth from "../../Hooks/useAuth";
 import { useRef } from 'react';
 
-const AddReview = ({ id, title }) => {
+const AddReview = ({ id, title, agentName }) => {
     const axiosPublic = useAxiosPublic()
-    const {user} = useAuth()
+    const { user } = useAuth()
     const formRef = useRef(null);
     console.log(user?.displayName)
     const handleReview = e => {
         e.preventDefault()
+        const formattedDateTime = new Date().toLocaleString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true,
+        });
         const reviewDescription = e.target.review.value;
         const review = {
             reviewerName: user?.displayName,
@@ -18,6 +27,8 @@ const AddReview = ({ id, title }) => {
             reviewDescription,
             propertyTitle: title,
             propertyId: id,
+            ReviewTime: formattedDateTime,
+            agentName
         }
 
         axiosPublic.post('/Reviews', review)

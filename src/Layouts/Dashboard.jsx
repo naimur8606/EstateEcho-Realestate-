@@ -46,7 +46,7 @@ const Dashboard = () => {
                                     <NavLink onClick={() => setMenu(false)} to={"/dashboard/boughtProperties"}><FaShoppingCart></FaShoppingCart>Property bought</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink onClick={() => setMenu(false)} to={"/dashboard/myReview"}><FaAd></FaAd>My Review</NavLink>
+                                    <NavLink onClick={() => setMenu(false)} to={"/dashboard/myReviews"}><FaAd></FaAd>My Review</NavLink>
                                 </li>
                             </>
                     }

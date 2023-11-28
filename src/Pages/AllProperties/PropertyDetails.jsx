@@ -75,7 +75,7 @@ const PropertyDetails = () => {
                 <CommonTitle title={"Review"}></CommonTitle>
                 <SpecificPropertyReview></SpecificPropertyReview>
             </div>
-            <AddReview id={property?._id} title={property?.propertyTitle}></AddReview>
+            <AddReview id={property?._id} title={property?.propertyTitle} agentName={property?.agentName}></AddReview>
         </div>
     );
 };
