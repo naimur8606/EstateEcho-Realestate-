@@ -13,6 +13,7 @@ import WishList from "../Pages/Dashboard/WishList";
 import MakeOffer from "../Pages/Dashboard/MakeOffer";
 import BoughtProperties from "../Pages/Dashboard/BoughtProperties";
 import MyReviews from "../Pages/Dashboard/MyReviews";
+import AddProperty from "../Pages/Dashboard/AddProperty";
 
 const router = createBrowserRouter([
     {
@@ -52,6 +53,8 @@ const router = createBrowserRouter([
           element:<UserProfile></UserProfile>,
           loader:({params})=>fetch(`http://localhost:5000/users/${params?.email}`)
         },
+
+        //user dashboard routes...
         {
           path:'/dashboard/wishlist',
           element:<WishList></WishList>,
@@ -68,6 +71,12 @@ const router = createBrowserRouter([
         {
           path:'/dashboard/myReviews',
           element:<MyReviews></MyReviews> ,
+        },
+
+        //agent dashboard routes
+        {
+          path:'/dashboard/addProperty',
+          element:<AddProperty></AddProperty> ,
         },
       ]
     },

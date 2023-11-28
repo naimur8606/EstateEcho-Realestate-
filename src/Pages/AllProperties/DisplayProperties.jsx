@@ -26,7 +26,7 @@ const DisplayProperties = () => {
                                     <img className="h-10 w-10 rounded-[50%]" src={item?.agentImage} alt="" />
                                 </div>
                                 <div className="flex justify-between items-center font-semibold">
-                                    <p className="font-semibold ">Price: <span className="">{item?.priceRange}</span></p>
+                                    <p className="font-semibold ">Price: $<span className="">{item?.priceRange}</span></p>
 
                                     <div className="flex items-center">
                                         <p className="">{item?.verificationStatus}</p>

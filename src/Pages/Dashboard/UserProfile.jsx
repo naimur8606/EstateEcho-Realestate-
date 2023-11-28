@@ -3,7 +3,6 @@ import { useLoaderData } from "react-router-dom";
 
 const UserProfile = () => {
     const user = useLoaderData();
-    console.log(user)
     return (
         <div>
             {
@@ -12,6 +11,7 @@ const UserProfile = () => {
             }
             <h5 className="text-3xl font-semibold mt-8">Name: {user?.name}</h5>
             <h5 className="text-2xl font-semibold mt-3">Email: {user?.email}</h5>
+            <h5 className="text-2xl font-semibold mt-3">User Role: {user?.status}</h5>
         </div>
     );
 };

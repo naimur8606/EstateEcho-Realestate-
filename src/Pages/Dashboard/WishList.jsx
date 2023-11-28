@@ -1,20 +1,13 @@
-import { useEffect, useState } from "react";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import useAuth from "../../Hooks/useAuth";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdVerified } from "react-icons/md";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import useWishlist from "../../Hooks/useWishlist";
 
 const WishList = () => {
-    const { user } = useAuth()
+    const [wishlist, refetch] = useWishlist()
     const axiosPublic = useAxiosPublic()
-    const [wishlist, setWishlist] = useState([])
-    useEffect(() => {
-        axiosPublic(`/Wishlist/${user?.email}`)
-            .then(res => setWishlist(res.data))
-
-    }, [axiosPublic, user])
     const handleDelete = (id) => {
         Swal.fire({
             title: "Are you sure?",
@@ -34,6 +27,7 @@ const WishList = () => {
                                 text: "Your file has been deleted.",
                                 icon: "success"
                             });
+                            refetch()
                         }
                     })
             }
@@ -42,6 +36,7 @@ const WishList = () => {
     }
     return (
         <div className="grid gap-5">
+        <h2 className="text-center text-3xl font-semibold my-4">Wishes Properties: {wishlist.length}</h2>
             {
                 wishlist?.map((property, idx) =>
                     <div key={idx} className="flex flex-col lg:flex-row justify-between lg:items-center lg:py-5 shadow-md rounded-lg">

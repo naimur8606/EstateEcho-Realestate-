@@ -51,7 +51,7 @@ const PropertyDetails = () => {
                 <img className="lg:w-1/2" src={property?.propertyImage} alt="" />
                 <div className="lg:w-[48%] md:pl-5 py-3 space-y-2">
                     <h2 className="text-3xl font-semibold">{property?.propertyTitle}</h2>
-                    <p className="font-semibold text-xl">Price: <span className="text-2xl ">{property?.priceRange}</span></p>
+                    <p className="font-semibold text-xl">Price: <span className="text-2xl ">${property?.priceRange}</span></p>
 
                     <p className="font-semibold text-xl">Type: {property?.propertyType}</p>
                     <div className="flex items-center text-xl font-semibold">

@@ -5,7 +5,6 @@ import useReviews from "../../Hooks/useReview";
 
 const MyReviews = () => {
     const [reviews, refetch] = useReviews()
-    console.log(reviews)
     const axiosPublic = useAxiosPublic()
     const handleDelete = (id) => {
         Swal.fire({
