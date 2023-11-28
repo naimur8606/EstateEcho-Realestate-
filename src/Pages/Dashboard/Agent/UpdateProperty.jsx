@@ -36,7 +36,7 @@ const UpdateProperty = () => {
                 propertyDescription: data.description,
                 agentEmail:databaseUser.email
             }
-            axiosPublic.patch(`/Properties/${property?._id}`, Property)
+            axiosPublic.patch(`/updateProperty/${property?._id}`, Property)
             .then(data => {
                 if (data.data.modifiedCount > 0) {
                     Swal.fire({
@@ -131,7 +131,7 @@ const UpdateProperty = () => {
                         required
                         className="input input-bordered w-full" />
                 </div>
-                <button type="submit" className="btn btn-primary">Create Account</button>
+                <button type="submit" className="bg-[#7dd321] hover:bg-black px-6 py-2 rounded-md font-semibold text-white text-xl">Update Property</button>
             </form>
         </div>
     );

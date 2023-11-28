@@ -1,24 +1,44 @@
-import { useEffect, useState } from "react";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
-import useAuth from "../../../Hooks/useAuth";
 import { FaLocationDot } from "react-icons/fa6";
-import { MdVerified } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { FaTrash } from "react-icons/fa";
+import Swal from "sweetalert2";
+import useProperties from "../../../Hooks/useProperties";
 
 const MyAddedProperties = () => {
-    const {user} = useAuth()
+    const [properties, refetch ] = useProperties()
     const axiosPublic = useAxiosPublic()
-    const [addedProperty, setAddedProperties] = useState([])
-    useEffect(()=>{
-        axiosPublic(`/Properties/myAdded/${user?.email}`)
-        .then(res => setAddedProperties(res.data))
-    },[axiosPublic, user])
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosPublic.delete(`/deleteProperty/${id}`)
+                    .then(res => {
+                        if (res.data?.deletedCount) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                            refetch()
+                        }
+                    })
+            }
+        });
+
+    }
     return (
         <div className="grid gap-5">
-        <h2 className="text-center text-3xl font-semibold my-4">Added Properties: {addedProperty.length}</h2>
+        <h2 className="text-center text-3xl font-semibold my-4">Added Properties: {properties.length}</h2>
             {
-                addedProperty?.map((property, idx) =>
+                properties?.map((property, idx) =>
                     <div key={idx} className="flex flex-col lg:flex-row justify-between lg:items-center lg:py-5 shadow-md rounded-lg">
                         <img className="lg:w-1/2" src={property?.propertyImage} alt="" />
                         <div className="lg:w-[48%] pl-2 md:pl-5 py-3 space-y-2">
@@ -36,8 +56,8 @@ const MyAddedProperties = () => {
                                 <img className="h-10 w-10 rounded-[50%]" src={property?.agentImage} alt="" />
                             </div>
                             <div className="flex space-x-3">
-                                {property?.verificationStatus === 'Redirect' || <Link to={`/dashboard/updateProperty/${property?._id}`} className="bg-[#7dd321] hover:bg-black px-6 py-2 rounded-md font-semibold text-white text-xl">Update</Link>}
-                                <button className="border border-red-600 hover:bg-[#3332323c] px-6 py-2 rounded-md font-semibold text-red-500 flex items-center text-xl"><FaTrash className="mr-2"></FaTrash> Delete</button>
+                                {property?.verificationStatus === 'Rejected' || <Link to={`/dashboard/updateProperty/${property?._id}`} className="bg-[#7dd321] hover:bg-black px-6 py-2 rounded-md font-semibold text-white text-xl">Update</Link>}
+                                <button onClick={()=>handleDelete(property?._id)} className="border border-red-600 hover:bg-[#3332323c] px-6 py-2 rounded-md font-semibold text-red-500 flex items-center text-xl"><FaTrash className="mr-2"></FaTrash> Delete</button>
                             </div>
                         </div>
                     </div>

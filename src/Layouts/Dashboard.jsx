@@ -1,4 +1,4 @@
-import { FaAd, FaBook, FaHome, FaList, FaListAlt, FaShoppingCart, FaUser, FaUtensils } from "react-icons/fa";
+import { FaAd, FaBook, FaHome, FaList, FaListAlt, FaShoppingCart, FaUser, FaUsers, FaUtensils } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import { useState } from "react";
 import { BiMenu, } from "react-icons/bi";
@@ -10,8 +10,8 @@ import { FaListCheck, FaShop } from "react-icons/fa6";
 const Dashboard = () => {
     const { user } = useAuth()
     const [menu, setMenu] = useState(false)
-    const isAdmin = false;
-    const isAgent = true;
+    const isAdmin = true;
+    const isAgent = false;
     return (
         <div className="flex">
             <div className={`w-72 py-4 lg:py-8 min-h-screen bg-[#535252] text-white text-lg duration-1000 z-50 lg:relative lg:left-0 top-0 absolute ${menu ? "left-0" : "-left-[1000px]"}`}>
@@ -24,16 +24,13 @@ const Dashboard = () => {
                         isAdmin &&
                         <>
                             <li>
-                                <NavLink onClick={() => setMenu(false)} to={"/dashboard/addItems"}><FaUtensils></FaUtensils>Add Items</NavLink>
+                                <NavLink onClick={() => setMenu(false)} to={"/dashboard/manageProperties"}><FaList></FaList>Manage Properties</NavLink>
                             </li>
                             <li>
-                                <NavLink onClick={() => setMenu(false)} to={"/dashboard/manageItems"}><FaList></FaList>Manage Items</NavLink>
+                                <NavLink onClick={() => setMenu(false)} to={"/dashboard/users"}><FaUsers></FaUsers>Manage Users</NavLink>
                             </li>
                             <li>
-                                <NavLink onClick={() => setMenu(false)} to={"/dashboard/manageBookings"}><FaBook></FaBook>Manage Bookings</NavLink>
-                            </li>
-                            <li>
-                                <NavLink onClick={() => setMenu(false)} to={"/dashboard/users"}><FaUser></FaUser>All Users</NavLink>
+                                <NavLink onClick={() => setMenu(false)} to={"/dashboard/manageReviews"}><FaBook></FaBook>Manage reviews</NavLink>
                             </li>
                         </>
                     }

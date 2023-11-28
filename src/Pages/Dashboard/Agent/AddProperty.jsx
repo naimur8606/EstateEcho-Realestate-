@@ -32,7 +32,7 @@ const AddProperty = () => {
                 priceRange: data.price,
                 propertyImage: res.data.data.display_url,
                 propertyDescription: data.description,
-                agentEmail:databaseUser.email
+                agentEmail:user?.email
             }
             axiosPublic.post('/Properties', property)
             .then(data => {
@@ -87,13 +87,13 @@ const AddProperty = () => {
                     <label className="label">
                         <span className="label-text text-xl font-bold">Agent Name:</span>
                     </label>
-                    <input defaultValue={databaseUser?.name} type="text" placeholder="email" className="input input-bordered" disabled />
+                    <input defaultValue={user?.displayName} type="text" placeholder="" className="input input-bordered" disabled />
                 </div>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text text-xl font-bold">Agent Email:</span>
                     </label>
-                    <input defaultValue={databaseUser?.email} type="text" placeholder="email" className="input input-bordered" disabled />
+                    <input defaultValue={user?.email} type="text" placeholder="" className="input input-bordered" disabled />
                 </div>
                 <div className="form-control">
                     <label className="label">
@@ -117,7 +117,7 @@ const AddProperty = () => {
                         required
                         className="input input-bordered w-full" />
                 </div>
-                <button type="submit" className="btn btn-primary">Create Account</button>
+                <button type="submit" className="bg-[#7dd321] hover:bg-black px-6 py-2 rounded-md font-semibold text-white text-xl">Add Property</button>
             </form>
         </div>
     );
