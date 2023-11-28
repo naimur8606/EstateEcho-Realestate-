@@ -1,17 +1,12 @@
-import { useEffect, useState } from "react";
-import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { FaTrash } from "react-icons/fa";
+import useReviews from "../../Hooks/useReview";
 
 const MyReviews = () => {
+    const [reviews, refetch] = useReviews()
+    console.log(reviews)
     const axiosPublic = useAxiosPublic()
-    const { user } = useAuth()
-    const [reviews, setReviews] = useState([])
-    useEffect(() => {
-        axiosPublic(`/Reviews/${user?.email}`)
-            .then(res => setReviews(res.data))
-    }, [axiosPublic, user])
     const handleDelete = (id) => {
         Swal.fire({
             title: "Are you sure?",
@@ -31,6 +26,7 @@ const MyReviews = () => {
                                 text: "Your file has been deleted.",
                                 icon: "success"
                             });
+                            refetch()
                         }
                     })
             }
