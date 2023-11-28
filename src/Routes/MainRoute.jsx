@@ -9,6 +9,8 @@ import PropertyDetails from "../Pages/AllProperties/PropertyDetails";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layouts/Dashboard";
 import UserProfile from "../Pages/Dashboard/UserProfile";
+import WishList from "../Pages/Dashboard/WishList";
+import MakeOffer from "../Pages/Dashboard/MakeOffer";
 
 const router = createBrowserRouter([
     {
@@ -21,11 +23,11 @@ const router = createBrowserRouter([
           element:<Home></Home>
         },
         {
-          path:"properties",
+          path:"/properties",
           element:<PrivateRoute><Properties></Properties></PrivateRoute>
         },
         {
-          path:"properties/:id",
+          path:"/properties/:id",
           element:<PrivateRoute><PropertyDetails></PropertyDetails></PrivateRoute>,
           loader: ({params})=>fetch(`http://localhost:5000/Properties/${params?.id}`)
         },
@@ -47,7 +49,16 @@ const router = createBrowserRouter([
           path:'/dashboard/:email',
           element:<UserProfile></UserProfile>,
           loader:({params})=>fetch(`http://localhost:5000/users/${params?.email}`)
-        }
+        },
+        {
+          path:'/dashboard/wishlist',
+          element:<WishList></WishList>,
+        },
+        {
+          path:'/dashboard/makeOffer/:id',
+          element:<MakeOffer></MakeOffer> ,
+          loader:({params})=>fetch(`http://localhost:5000/Wishlist/makeOffer/${params?.id}`)
+        },
       ]
     },
   ]);

@@ -37,7 +37,7 @@ const DisplayProperties = () => {
                                     <FaLocationDot className="text-[#8bff11] mr-1"></FaLocationDot>{item?.propertyLocation}
                                 </div>
                                 <div className="mt-5 flex justify-center">
-                                        <Link to={`http://localhost:5173/properties/${item?._id}`} className="bg-[#7dd321] hover:bg-black px-6 py-2 rounded-md font-semibold text-white text-xl">View Details</Link>
+                                        <Link to={`/properties/${item?._id}`} className="bg-[#7dd321] hover:bg-black px-6 py-2 rounded-md font-semibold text-white text-xl">View Details</Link>
                                     </div>
                             </div>
                         </div>

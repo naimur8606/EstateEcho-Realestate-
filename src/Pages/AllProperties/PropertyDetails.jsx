@@ -12,7 +12,7 @@ const PropertyDetails = () => {
     const {user} = useAuth()
     const property = useLoaderData()
     const axiosPublic = useAxiosPublic()
-    // console.log(property)
+    console.log(property)
     const handleWishList = () => {
         const item = {
             PropertyId : property?._id,

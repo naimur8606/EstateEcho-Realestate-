@@ -16,7 +16,7 @@ const SpecificPropertyReview = () => {
             .then(res => setReviews(res.data))
 
     }, [axiosPublic])
-    console.log(reviews)
+    // console.log(reviews)
     return (
         <div className="mt-3">
             <Swiper

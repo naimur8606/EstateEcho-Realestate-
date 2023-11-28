@@ -12,7 +12,6 @@ const Dashboard = () => {
     const isAdmin = false;
     return (
         <div className="flex">
-            <BiMenu onClick={() => setMenu(true)} className="text-2xl md:text-5xl top-[33px] md:top-9 left-4 absolute lg:hidden"></BiMenu>
             <div className={`w-64 py-4 lg:py-8 min-h-screen bg-[#535252] text-white text-lg duration-1000 z-50 lg:relative lg:left-0 top-0 absolute ${menu ? "left-0" : "-left-[1000px]"}`}>
                 <ul className='menu p-4'>
                     <AiOutlineClose onClick={() => setMenu(false)} className="text-4xl mb-5 lg:hidden"></AiOutlineClose>
@@ -60,7 +59,8 @@ const Dashboard = () => {
                     </li>
                 </ul>
             </div>
-            <div className="p-8 w-full">
+            <div className="p-2 md:p-8 w-full">
+            <BiMenu onClick={() => setMenu(true)} className="text-5xl my-2 lg:hidden"></BiMenu>
                 <Outlet></Outlet>
             </div>
         </div>
