@@ -1,15 +1,15 @@
 import Swal from "sweetalert2";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import useRequestedProperties from "../../../Hooks/useRequestedProperties";
 import { FaTrash } from "react-icons/fa";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const RequestedProperties = () => {
-    const axiosPublic = useAxiosPublic()
-    const [RequestedProperties, refetch] = useRequestedProperties()
-    console.log(RequestedProperties)
+    const axiosSecure = useAxiosSecure()
+    const [RequestedProperties, refetch] = useRequestedProperties();
 
     const handleUpdate = (id, status) => {
-        axiosPublic.patch(`/UpdateBoughtProperties/${id}`, { status })
+        axiosSecure.patch(`/UpdateBoughtProperties/${id}`, { status })
             .then(data => {
                 if (data.data.modifiedCount > 0) {
                     Swal.fire({
@@ -32,6 +32,9 @@ const RequestedProperties = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>EstateEcho | Requested Property</title>
+            </Helmet>
             <h1 className="text-3xl font-semibold text-center my-5">Total Requested: {RequestedProperties.length}</h1>
             <div className="overflow-x-auto">
                 <table className="table">

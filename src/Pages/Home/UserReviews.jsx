@@ -5,73 +5,46 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 // import required modules
-import { FreeMode, Pagination } from 'swiper/modules';
+import { Navigation,  } from 'swiper/modules';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import CommonTitle from '../../Shared-Components/CommonTitle';
+import { FaUser } from 'react-icons/fa';
 
 const UserReviews = () => {
     const axiosPublic = useAxiosPublic()
     const [reviews, setReviews] = useState([])
-    useEffect(()=>{
+    useEffect(() => {
         axiosPublic('/Reviews')
-        .then(res => setReviews(res.data))
+            .then(res => setReviews(res.data))
 
-    },[axiosPublic])
-    const slider = reviews?.map((item, idx) =>
-        <SwiperSlide key={idx} className='text-center my-1 shadow-md p-5 font-medium rounded-md'>
-            <img className='h-36 w-36 mx-auto rounded-[50%] mb-5' src={item?.reviewerImage} alt="" />
-            <h4 className='text-2xl'><span className='font-normal'>Reviewer:</span> {item?.reviewerName}</h4>
-            <h5 className='text-xl my-1'><span className='font-normal'>Property Title:</span> {item?.propertyTitle}</h5>
-            <p className='text-justify font-normal'>{item?.reviewDescription}</p>
-        </SwiperSlide>
+    }, [axiosPublic])
+    const slider = reviews?.map(review => <SwiperSlide key={review._id}>
+        <div className="flex flex-col items-center text-center mx-5 md:mx-24 md:my-16">
+            {
+                review?.reviewerImage ? <img className='h-32 w-32 mx-auto rounded-[50%] mb-5' src={review?.reviewerImage} alt="" /> :
+                    <FaUser className="text-7xl"></FaUser>
+            }
+            <h5 className='text-xl font-semibold md:text-2xl my-1'><span className='font-normal'>Property:</span> {review?.propertyTitle}</h5>
+            <h4 className='font-semibold md:text-xl my-1'><span className='font-normal'>Reviewer:</span> {review?.reviewerName}</h4>
+            <p className='text-justify md:text-center font-normal'>{review?.reviewDescription}</p>
+        </div>
+    </SwiperSlide>
     )
-
     return (
         <div className=' w-[97%] lg:w-full mx-auto'>
             <CommonTitle title={"Latest Reviews"}></CommonTitle>
-                <div className='md:hidden'>
+            <div className=''>
                 <Swiper
-                    slidesPerView={1}
-                    spaceBetween={10}
-                    freeMode={true}
                     pagination={{
-                        clickable: true,
+                        type: 'progressbar',
                     }}
-                    modules={[FreeMode, Pagination]}
-                    className="mySwiper mb-5 mt-10 "
+                    navigation={true}
+                    modules={[Navigation]}
+                    className="mySwiper"
                 >
                     {slider}
                 </Swiper>
-
-                </div>
-                <div className='hidden md:block lg:hidden'>
-                <Swiper
-                    slidesPerView={2}
-                    spaceBetween={30}
-                    freeMode={true}
-                    pagination={{
-                        clickable: true,
-                    }}
-                    modules={[FreeMode, Pagination]}
-                    className="mySwiper mb-5 mt-10"
-                >
-                    {slider}
-                </Swiper>
-                </div>
-                <div className='hidden lg:block'>
-                <Swiper
-                    slidesPerView={3}
-                    spaceBetween={10}
-                    freeMode={true}
-                    pagination={{
-                        clickable: true,
-                    }}
-                    modules={[FreeMode, Pagination]}
-                    className="mySwiper mb-5 mt-10 "
-                >
-                    {slider}
-                </Swiper>
-                </div>
+            </div>
         </div>
     );
 };

@@ -20,6 +20,8 @@ import RequestedProperties from "../Pages/Dashboard/Agent/RequestedProperties";
 import ManageProperties from "../Pages/Dashboard/Admin/ManageProperties";
 import AllUsers from "../Pages/Dashboard/Admin/AllUsers";
 import ManageReviews from "../Pages/Dashboard/Admin/ManageReviews";
+import Payment from "../Pages/Dashboard/User/Payment";
+import SoldProperties from "../Pages/Dashboard/Agent/SoldProperties";
 
 const router = createBrowserRouter([
     {
@@ -78,6 +80,10 @@ const router = createBrowserRouter([
           path:'/dashboard/myReviews',
           element:<MyReviews></MyReviews> ,
         },
+        {
+          path:'/dashboard/payment/:id',
+          element:<Payment></Payment> ,
+        },
 
         //agent dashboard routes
         {
@@ -96,6 +102,10 @@ const router = createBrowserRouter([
         {
           path:'/dashboard/requestedProperty',
           element:<RequestedProperties></RequestedProperties>
+        },
+        {
+          path:'/dashboard/soldProperty',
+          element:<SoldProperties></SoldProperties>
         },
 
         //admin dashboard routes

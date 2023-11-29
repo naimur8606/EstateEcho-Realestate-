@@ -7,20 +7,24 @@ import AddReview from "./AddReview";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
+import useWishlist from "../../Hooks/useWishlist";
+import { Helmet } from "react-helmet-async";
 
 const PropertyDetails = () => {
-    const {user} = useAuth()
+    const [, refetch] = useWishlist()
+    const { user } = useAuth()
     const property = useLoaderData()
     const axiosPublic = useAxiosPublic()
     console.log(property)
     const handleWishList = () => {
         const item = {
-            PropertyId : property?._id,
-            userEmail : user?.email,
+            PropertyId: property?._id,
+            userEmail: user?.email,
             propertyImage: property?.propertyImage,
             propertyTitle: property?.propertyTitle,
             propertyLocation: property?.propertyLocation,
             agentName: property?.agentName,
+            agentEmail: property?.agentEmail,
             agentImage: property?.agentImage,
             verificationStatus: property?.verificationStatus,
             priceRange: property?.priceRange
@@ -34,7 +38,8 @@ const PropertyDetails = () => {
                         icon: 'success',
                         confirmButtonText: 'Yaaah'
                     })
-                }else{
+                    refetch()
+                } else {
                     Swal.fire({
                         title: 'Warning!',
                         text: 'You are already select it..!',
@@ -43,13 +48,24 @@ const PropertyDetails = () => {
                     })
                 }
             })
+            .catch(err => {
+                Swal.fire({
+                    title: 'Warning!',
+                    text: `${err.message}`,
+                    icon: 'warning',
+                    confirmButtonText: 'Ok'
+                })
+            })
     }
 
     return (
         <div className="mt-[64px] md:mt-[80px]">
+            <Helmet>
+                <title>EstateEcho | {property?.propertyTitle}</title>
+            </Helmet>
             <div className="flex flex-col lg:flex-row justify-between lg:items-center lg:py-5">
                 <img className="lg:w-1/2" src={property?.propertyImage} alt="" />
-                <div className="lg:w-[48%] md:pl-5 py-3 space-y-2">
+                <div className="lg:w-[48%] px-2 md:pl-5 py-3 space-y-2">
                     <h2 className="text-3xl font-semibold">{property?.propertyTitle}</h2>
                     <p className="font-semibold text-xl">Price: <span className="text-2xl ">${property?.priceRange}</span></p>
 

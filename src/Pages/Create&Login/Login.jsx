@@ -6,6 +6,7 @@ import useAuth from "../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import SocialLogin from "./SocialLogin";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
     const { register, handleSubmit } = useForm();
@@ -59,6 +60,9 @@ const Login = () => {
     };
     return (
         <div className="flex items-center min-h-screen w-[97%] lg:w-full mx-auto">
+            <Helmet>
+                <title>EstateEcho | Login</title>
+            </Helmet>
             <div className="flex w-full flex-col justify-between lg:flex-row-reverse my-5">
                 <img className="md:w-2/3 lg:w-2/5 mx-auto" src='https://i.ibb.co/0jhnKK2/login.gif' alt="" />
                 <div className="shadow-2xl md:w-2/3 lg:w-1/3 mx-auto mt-10 lg:mt-0 p-5 rounded-lg">

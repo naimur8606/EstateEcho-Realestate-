@@ -3,18 +3,23 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import useAuth from "../../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useProperties from "../../../Hooks/useProperties";
+import { Helmet } from "react-helmet-async";
 const image_hosting_key = import.meta.env.VITE_Image_Hosting;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddProperty = () => {
+    const [,refetch] = useProperties()
     const { register, handleSubmit } = useForm();
-    const { user } = useAuth()
-    const axiosPublic = useAxiosPublic()
-    const [databaseUser, setDatabaseUser] = useState({})
+    const { user } = useAuth();
+    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
+    const [databaseUser, setDatabaseUser] = useState({});
     useEffect(() => {
-        axiosPublic(`/Users/${user?.email}`)
+        axiosSecure(`/Users/specific/${user?.email}`)
             .then(res => setDatabaseUser(res.data))
-    }, [axiosPublic, user])
+    }, [axiosSecure, user])
     const onSubmit = async (data) => {
         const imageFile = { image: data.image[0] }
         const res = await axiosPublic.post(image_hosting_api, imageFile, {
@@ -34,7 +39,7 @@ const AddProperty = () => {
                 propertyDescription: data.description,
                 agentEmail:user?.email
             }
-            axiosPublic.post('/Properties', property)
+            axiosSecure.post('/Properties', property)
             .then(data => {
                 if (data.data.insertedId) {
                     Swal.fire({
@@ -43,13 +48,25 @@ const AddProperty = () => {
                         icon: 'success',
                         confirmButtonText: 'Yaaah'
                     })
+                    refetch()
                 }
+            })
+            .catch(error =>{
+                Swal.fire({
+                    title: 'Warning!',
+                    text: `${error.message}`,
+                    icon: 'warning',
+                    confirmButtonText: 'Ok'
+                })
             })
         }
 
     }
     return (
         <div>
+            <Helmet>
+                <title>EstateEcho | Add Property</title>
+            </Helmet>
             <h2 className="text-center text-4xl font-bold">Create a Property</h2>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
                 <div className="form-control">

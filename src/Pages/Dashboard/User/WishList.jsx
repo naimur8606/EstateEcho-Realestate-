@@ -4,6 +4,7 @@ import { MdVerified } from "react-icons/md";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import useWishlist from "../../../Hooks/useWishlist";
+import { Helmet } from "react-helmet-async";
 
 const WishList = () => {
     const [wishlist, refetch] = useWishlist()
@@ -36,6 +37,9 @@ const WishList = () => {
     }
     return (
         <div className="grid gap-5">
+            <Helmet>
+                <title>EstateEcho | Wishlist</title>
+            </Helmet>
         <h2 className="text-center text-3xl font-semibold my-4">Wishes Properties: {wishlist.length}</h2>
             {
                 wishlist?.map((property, idx) =>

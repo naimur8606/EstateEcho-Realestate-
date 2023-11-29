@@ -3,6 +3,7 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdVerified } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { FaSearch } from "react-icons/fa";
 
 const DisplayProperties = () => {
     const [properties, setProperties] = useState([])
@@ -14,6 +15,18 @@ const DisplayProperties = () => {
     console.log(properties)
     return (
         <div>
+            <div className="">
+                <img className="w-full h-64 md:h-80 lg:h-[500px]" src="https://i.ibb.co/QQZjgBD/featured.jpg" alt="" />
+                <div className="absolute top-[64px] md:top-[80px] text-white z-20 max-w-6xl mx-auto w-full h-64 md:h-80 lg:h-[500px] bg-[#322f2f8b] flex items-center">
+                    <div className="ml-5 md:ml-20">
+                        <h6 className="text-xl md:text-2xl">Welcome To EstateEcho</h6>
+                        <h1 className="text-4xl md:text-6xl">All Luxury Apartments</h1>
+                        <form className="flex text-2xl mt-5 w-full">
+                            <input className="pl-1 w-[55%] rounded-l-lg bg-[#ffffff29] border border-[#8bff11]" placeholder="Enter Apartment Name" type="text" /><button type="submit" className="bg-[#90de3d] py-2 px-3 rounded-r-lg font-bold flex items-center">Search<FaSearch className="ml-2"></FaSearch></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-8 w-[97%] lg:w-full mx-auto">
                 {
                     properties?.map((item, idx) =>
@@ -37,8 +50,8 @@ const DisplayProperties = () => {
                                     <FaLocationDot className="text-[#8bff11] mr-1"></FaLocationDot>{item?.propertyLocation}
                                 </div>
                                 <div className="mt-5 flex justify-center">
-                                        <Link to={`/properties/${item?._id}`} className="bg-[#7dd321] hover:bg-black px-6 py-2 rounded-md font-semibold text-white text-xl">View Details</Link>
-                                    </div>
+                                    <Link to={`/properties/${item?._id}`} className="bg-[#7dd321] hover:bg-black px-6 py-2 rounded-md font-semibold text-white text-xl">View Details</Link>
+                                </div>
                             </div>
                         </div>
                     )

@@ -4,6 +4,8 @@ import useAuth from "../../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { useLoaderData } from "react-router-dom";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 const image_hosting_key = import.meta.env.VITE_Image_Hosting;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
@@ -12,6 +14,7 @@ const UpdateProperty = () => {
     const { register, handleSubmit } = useForm();
     const { user } = useAuth()
     const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const [databaseUser, setDatabaseUser] = useState({})
     useEffect(() => {
         axiosPublic(`/Users/${user?.email}`)
@@ -36,7 +39,7 @@ const UpdateProperty = () => {
                 propertyDescription: data.description,
                 agentEmail:databaseUser.email
             }
-            axiosPublic.patch(`/updateProperty/${property?._id}`, Property)
+            axiosSecure.patch(`/updateProperty/${property?._id}`, Property)
             .then(data => {
                 if (data.data.modifiedCount > 0) {
                     Swal.fire({
@@ -60,6 +63,9 @@ const UpdateProperty = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>EstateEcho | Update Property</title>
+            </Helmet>
             <h2 className="text-center text-4xl font-bold">Create a Property</h2>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
                 <div className="form-control">

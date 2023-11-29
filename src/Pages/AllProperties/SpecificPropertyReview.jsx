@@ -1,24 +1,24 @@
-import { useRef, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { FaUser } from "react-icons/fa";
+import useReviews from "../../Hooks/useReview";
+import { useParams } from 'react-router-dom';
 
 
 const SpecificPropertyReview = () => {
-    const axiosPublic = useAxiosPublic()
-    const [reviews, setReviews] = useState([])
-    useEffect(() => {
-        axiosPublic('/Reviews')
-            .then(res => setReviews(res.data))
-
-    }, [axiosPublic])
-    // console.log(reviews)
+    const [reviews] = useReviews()
+    const id = useParams()?.id;
+    const SpecificReviews = reviews?.filter(item => item?.propertyId === id)
     return (
         <div className="mt-3">
+            {
+                SpecificReviews.length === 0 && <div className="flex items-center justify-center h-40 w-full text-2xl font-medium">
+                    <h4>Add a review on this Property...!</h4>
+                </div>
+            }
             <Swiper
                 pagination={{
                     type: 'progressbar',
@@ -28,7 +28,7 @@ const SpecificPropertyReview = () => {
                 className="mySwiper"
             >
                 {
-                    reviews?.map(review => <SwiperSlide
+                    SpecificReviews?.map(review => <SwiperSlide
                         key={review._id}
                     >
                         <div className="flex flex-col items-center text-center mx-5 md:mx-24 md:my-16">

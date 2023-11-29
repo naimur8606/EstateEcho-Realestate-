@@ -2,6 +2,7 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { FaTrash } from "react-icons/fa";
 import useReviews from "../../../Hooks/useReview";
+import { Helmet } from "react-helmet-async";
 
 const MyReviews = () => {
     const [reviews, refetch] = useReviews()
@@ -33,6 +34,9 @@ const MyReviews = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>EstateEcho | My Reviews</title>
+            </Helmet>
             <h2 className="text-center text-3xl font-semibold my-4">Total Reviews: {reviews.length}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {

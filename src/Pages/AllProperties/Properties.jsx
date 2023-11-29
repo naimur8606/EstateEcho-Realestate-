@@ -1,10 +1,12 @@
+import { Helmet } from "react-helmet-async";
 import DisplayProperties from "./DisplayProperties";
-import PropertiesBanner from "./PropertiesBanner";
 
 const Properties = () => {
     return (
         <div className="mt-[64px] md:mt-[80px]">
-            <PropertiesBanner></PropertiesBanner>
+            <Helmet>
+                <title>EstateEcho | Properties</title>
+            </Helmet>
             <DisplayProperties></DisplayProperties>
         </div>
     );

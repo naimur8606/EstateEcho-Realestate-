@@ -1,16 +1,19 @@
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import useWishlist from "../../../Hooks/useWishlist";
+import { Helmet } from "react-helmet-async";
 
 const MakeOffer = () => {
+    const [, refetch] = useWishlist()
     const {user} = useAuth()
     const axiosPublic = useAxiosPublic()
     const property = useLoaderData()
     const [priceAlert, setPriceAlert] = useState(false)
     const [offerPrice, setOfferPrice] = useState(0)
-    console.log(property)
+    const navigate = useNavigate()
     const handlePrice = (e) => {
         const price = parseInt(e.target.value)
         const numericValues = property.priceRange.replace(/[^0-9,-]/g, '').split('-');
@@ -27,15 +30,17 @@ const MakeOffer = () => {
     const handleBoughtProperty = (e) =>{
         e.preventDefault()
         const boughtProperty ={
+            id: property?._id,
             propertyLocation:property?.propertyLocation,
             propertyTitle:property?.propertyTitle,
             propertyImage:property?.propertyImage,
-            AgentName:property?.agentName,
+            agentName:property?.agentName,
+            agentEmail:property?.agentEmail,
             offeredAmount:offerPrice,
             priceRange:property?.priceRange,
             buyerName:user?.displayName,
             buyingDate:e.target.date.value,
-            PropertyId:property?.PropertyId,
+            propertyId:property?.PropertyId,
             buyerEmail:user?.email,
             status:'pending'
         }
@@ -49,11 +54,16 @@ const MakeOffer = () => {
                         icon: 'success',
                         confirmButtonText: 'Yaaah'
                     })
+                    refetch()
+                    navigate('/dashboard/boughtProperties')
                 }
             })
     }
     return (
         <div>
+            <Helmet>
+                <title>EstateEcho | Make Offer</title>
+            </Helmet>
             <h2 className="text-center text-4xl font-bold">Make an Offer</h2>
             <form onSubmit={handleBoughtProperty} className="space-y-3">
                 <div className="form-control">

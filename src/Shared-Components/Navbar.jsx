@@ -64,7 +64,7 @@ const Navbar = () => {
                 <li>
             {user ?
                     <div className="flex items-center">
-                        {user?.photoURL ? <img className="rounded-[50%] h-8 mr-2" src={user?.photoURL} alt="" /> : <BsPerson className="text-2xl mr-1.5"></BsPerson>}<button onClick={SignOut} >Logout</button>
+                        {user?.photoURL ? <img className="rounded-[50%] h-8 w-8 mr-2" src={user?.photoURL} alt="" /> : <BsPerson className="text-2xl mr-1.5"></BsPerson>}<button onClick={SignOut} >Logout</button>
                     </div> :
                     <div className="flex items-center"><BsPersonX className="text-2xl mr-1.5"></BsPersonX>
                         <NavLink

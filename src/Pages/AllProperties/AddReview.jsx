@@ -2,8 +2,10 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import useAuth from "../../Hooks/useAuth";
 import { useRef } from 'react';
+import useReviews from "../../Hooks/useReview";
 
 const AddReview = ({ id, title, agentName }) => {
+    const [ , refetch] = useReviews()
     const axiosPublic = useAxiosPublic()
     const { user } = useAuth()
     const formRef = useRef(null);
@@ -44,7 +46,16 @@ const AddReview = ({ id, title, agentName }) => {
                     if (formRef.current) {
                         formRef.current.reset();
                     }
+                    refetch()
                 }
+            })
+            .catch(err => {
+                Swal.fire({
+                    title: 'Warning!',
+                    text: `${err.message}`,
+                    icon: 'warning',
+                    confirmButtonText: 'Ok'
+                })
             })
     }
     return (

@@ -3,6 +3,7 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { FaLocationDot } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const BoughtProperties = () => {
     const {user} = useAuth()
@@ -14,6 +15,9 @@ const BoughtProperties = () => {
     }, [axiosPublic, user])
     return (
         <div>
+            <Helmet>
+                <title>EstateEcho | Bought Property</title>
+            </Helmet>
             <h2 className="text-3xl text-center font-semibold my-5">Total Bought Property: {boughtProperties.length}</h2>
             <div className="grid gap-5">
             {
@@ -25,17 +29,20 @@ const BoughtProperties = () => {
                             <div className="flex items-center text-xl">
                                 <FaLocationDot className="text-[#8bff11] mr-1"></FaLocationDot>{item?.propertyLocation}
                             </div>
-                            <div className={`text-xl font-semibold ${item?.status === 'accepted' ? 'text-green-700' : 'text-[rgb(247,159,105)]'} underline-offset-2`}>Status: {item?.status}</div>
+                            <div className={`text-xl font-semibold ${item?.status === 'accepted' || item?.status === 'Bought' ? 'text-green-700' : 'text-[rgb(247,159,105)]'} underline-offset-2`}>Status: {item?.status}</div>
                             <div className="font-medium space-y-1">
                                 <p className="text-xl">Offered Price: $<span className="">{item?.offeredAmount}</span></p>
                                 <p className="">Price: <span className="">{item?.priceRange}</span></p>
                             </div>
-                            <div className="flex items-center text-xl font-medium">
-                                <p>Agent: {item?.AgentName}</p>
+                            <div className="flex items-center text-xl font-medium pb-3">
+                                <p>Agent: {item?.agentName}</p>
                             </div>
-                            {item?.status === 'accepted' && <div className="mt-5">
-                                <Link to={`/dashboard/payment`} className="bg-[#7dd321] hover:bg-black px-6 py-2 rounded-md font-semibold text-white text-xl">Pay</Link>
+                            {item?.status === 'Accepted' && <div className="mt-5">
+                                <Link to={`/dashboard/payment/${item?._id}`} className="bg-[#7dd321] hover:bg-black px-6 py-2 rounded-md font-semibold text-white text-xl">Pay</Link>
                             </div>}
+                            {item?.status === 'Bought' &&
+                                <h5 className="font-bold text-xl">TransactionId: {item?.transactionId}</h5>
+                            }
                         </div>
                     </div>
                 )

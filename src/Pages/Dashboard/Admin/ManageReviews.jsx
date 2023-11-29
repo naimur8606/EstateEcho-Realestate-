@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { FaTrash } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const ManageReviews = () => {
     const axiosSecure = useAxiosSecure()
@@ -39,6 +40,9 @@ const ManageReviews = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>EstateEcho | Manage Reviews</title>
+            </Helmet>
             <h2 className="text-center text-3xl font-semibold my-4">Total Reviews: {allReviews.length}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {

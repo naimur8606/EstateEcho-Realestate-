@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "./useAxiosPublic";
 import useAuth from "./useAuth";
+import useAxiosSecure from "./useAxiosSecure";
 
 const useRequestedProperties = () => {
-    const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const {user} = useAuth()
     const {refetch ,data: RequestedProperties = []} = useQuery({
         queryKey: ["RequestedProperties"],
         queryFn: async () =>{
-            const res = await axiosPublic.get(`/boughtProperties/checkAgent/${user?.email}`)
+            const res = await axiosSecure.get(`/boughtProperties/checkAgent/${user?.email}`)
             return res.data;
         }
     })

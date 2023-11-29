@@ -1,15 +1,16 @@
 import Swal from "sweetalert2";
 import useAllProperties from "../../../Hooks/useAllProperties";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { FaTrash } from "react-icons/fa";
 import { MdVerified } from "react-icons/md";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const ManageProperties = () => {
     const [AllProperties, refetch] = useAllProperties()
-    const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure();
 
     const handleUpdate = (id, status) => {
-        axiosPublic.patch(`/updateProperty/${id}`, { status })
+        axiosSecure.patch(`/Properties/statusUpdate/${id}`, { status })
             .then(data => {
                 if (data.data.modifiedCount > 0) {
                     Swal.fire({
@@ -32,6 +33,9 @@ const ManageProperties = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>EstateEcho | Manage Properties</title>
+            </Helmet>
         <h1 className="text-3xl font-semibold text-center my-5">Total Properties: {AllProperties.length}</h1>
         <div className="overflow-x-auto">
                 <table className="table">
@@ -67,10 +71,13 @@ const ManageProperties = () => {
                                             </button>
                                         </td>
                                     }
-                                    { item?.verificationStatus === "Verified" ?
+                                    { item?.verificationStatus === "Verified" &&
                                         <td className="text-center font-semibold">
                                             Verified
-                                        </td>:
+                                        </td>
+                                        
+                                    }
+                                    { item?.verificationStatus === "Rejected" &&
                                         <td className="text-center font-semibold">
                                             Rejected
                                         </td>

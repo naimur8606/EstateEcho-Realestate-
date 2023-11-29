@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useProperties from "../../../Hooks/useProperties";
+import { Helmet } from "react-helmet-async";
 
 const MyAddedProperties = () => {
     const [properties, refetch ] = useProperties()
@@ -36,6 +37,9 @@ const MyAddedProperties = () => {
     }
     return (
         <div className="grid gap-5">
+            <Helmet>
+                <title>EstateEcho | My Added Property</title>
+            </Helmet>
         <h2 className="text-center text-3xl font-semibold my-4">Added Properties: {properties.length}</h2>
             {
                 properties?.map((property, idx) =>
