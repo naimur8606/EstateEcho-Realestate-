@@ -18,6 +18,7 @@ import MyAddedProperties from "../Pages/Dashboard/Agent/MyAddedProperties";
 import UpdateProperty from "../Pages/Dashboard/Agent/UpdateProperty";
 import RequestedProperties from "../Pages/Dashboard/Agent/RequestedProperties";
 import ManageProperties from "../Pages/Dashboard/Admin/ManageProperties";
+import AllUsers from "../Pages/Dashboard/Admin/AllUsers";
 
 const router = createBrowserRouter([
     {
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
         {
           path:"/properties/:id",
           element:<PrivateRoute><PropertyDetails></PropertyDetails></PrivateRoute>,
-          loader: ({params})=>fetch(`http://localhost:5000/Properties/${params?.id}`)
+          loader: ({params})=>fetch(`https://estate-echo-server.vercel.app/Properties/${params?.id}`)
         },
       ]
     },
@@ -55,7 +56,7 @@ const router = createBrowserRouter([
         {
           path:'/dashboard/:email',
           element:<UserProfile></UserProfile>,
-          loader:({params})=>fetch(`http://localhost:5000/users/${params?.email}`)
+          loader:({params})=>fetch(`https://estate-echo-server.vercel.app/Users/specific/${params?.email}`)
         },
 
         //user dashboard routes...
@@ -66,7 +67,7 @@ const router = createBrowserRouter([
         {
           path:'/dashboard/makeOffer/:id',
           element:<MakeOffer></MakeOffer> ,
-          loader:({params})=>fetch(`http://localhost:5000/Wishlist/makeOffer/${params?.id}`)
+          loader:({params})=>fetch(`https://estate-echo-server.vercel.app/Wishlist/makeOffer/${params?.id}`)
         },
         {
           path:'/dashboard/boughtProperties',
@@ -89,7 +90,7 @@ const router = createBrowserRouter([
         {
           path:'/dashboard/updateProperty/:id',
           element:<UpdateProperty></UpdateProperty> ,
-          loader:({params})=>fetch(`http://localhost:5000/Properties/${params?.id}`)
+          loader:({params})=>fetch(`https://estate-echo-server.vercel.app/Properties/${params?.id}`)
         },
         {
           path:'/dashboard/requestedProperty',
@@ -100,6 +101,10 @@ const router = createBrowserRouter([
         {
           path:'/dashboard/manageProperties',
           element:<ManageProperties></ManageProperties>
+        },
+        {
+          path:'/dashboard/users',
+          element:<AllUsers></AllUsers>
         },
       ]
     },

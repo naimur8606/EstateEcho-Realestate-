@@ -2,17 +2,20 @@ import { useEffect, useState } from "react";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { FaLocationDot } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
 
 const BoughtProperties = () => {
+    const {user} = useAuth()
     const axiosPublic = useAxiosPublic()
     const [boughtProperties, setBoughtProperties] = useState([])
     useEffect(() => {
-        axiosPublic("/boughtProperties")
+        axiosPublic(`/boughtProperties/${user?.email}`)
             .then(res => setBoughtProperties(res.data))
-    }, [axiosPublic])
-    console.log(boughtProperties)
+    }, [axiosPublic, user])
     return (
-        <div className="grid gap-5">
+        <div>
+            <h2 className="text-3xl text-center font-semibold my-5">Total Bought Property: {boughtProperties.length}</h2>
+            <div className="grid gap-5">
             {
                 boughtProperties?.map((item, idx) =>
                     <div key={idx} className="space-y-2 flex flex-col md:flex-row shadow-md rounded-lg">
@@ -37,6 +40,7 @@ const BoughtProperties = () => {
                     </div>
                 )
             }
+        </div>
         </div>
     );
 };

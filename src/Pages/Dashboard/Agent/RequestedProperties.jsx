@@ -62,7 +62,7 @@ const RequestedProperties = () => {
                                     {
                                         item?.status === "Accepted" || item?.status === "Rejected" || <td> 
                                             <button onClick={() => handleUpdate(item?._id, "Accepted")} className="bg-[#7dd321] hover:bg-black px-6 py-2 rounded-md font-semibold text-white text-xl">Accept</button> <br />
-                                            <button onClick={() => handleUpdate(item?._id, "Rejected")} className="border border-red-600 hover:bg-[#3332323c] px-6 py-2 rounded-md font-semibold text-red-500 flex items-center text-xl"><FaTrash className="mr-2"></FaTrash> Rejected</button>
+                                            <button onClick={() => handleUpdate(item?._id, "Rejected")} className=" mt-2 border border-red-600 hover:bg-[#3332323c] px-6 py-2 rounded-md font-semibold text-red-500 flex items-center text-xl"><FaTrash className="mr-2"></FaTrash> Rejected</button>
                                         </td>
                                     }
 

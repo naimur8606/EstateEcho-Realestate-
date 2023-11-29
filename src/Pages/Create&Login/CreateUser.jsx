@@ -38,7 +38,7 @@ const CreateUser = () => {
                 .then(() => {
                     updateUser(name, photoUrl)
                     signOut(auth)
-                    const status = "user";
+                    const status = "User";
                     const user = { name, email, photoUrl, status };
                     axiosPublic.post('/users', user)
                         .then(res => res.json())

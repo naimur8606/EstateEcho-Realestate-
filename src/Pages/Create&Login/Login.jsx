@@ -23,7 +23,7 @@ const Login = () => {
         console.log(email, password)
         userLogin(email, password)
             .then(() => {
-                const status = "user";
+                const status = "User";
                 const name = user?.displayName;
                 const photoURL = user?.photoURL;
                 const DatabaseUser = { name, email, photoURL, status };
