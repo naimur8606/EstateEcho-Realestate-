@@ -11,8 +11,6 @@ import useAxiosPublic from "../Hooks/useAxiosPublic";
 const Dashboard = () => {
     const { user } = useAuth()
     const [menu, setMenu] = useState(false)
-    const isAdmin = true;
-    const isAgent = false;
     const [userStatus, setUserStates] =useState('');
     const axiosPublic = useAxiosPublic()
     useEffect(()=>{

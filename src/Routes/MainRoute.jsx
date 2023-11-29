@@ -19,6 +19,7 @@ import UpdateProperty from "../Pages/Dashboard/Agent/UpdateProperty";
 import RequestedProperties from "../Pages/Dashboard/Agent/RequestedProperties";
 import ManageProperties from "../Pages/Dashboard/Admin/ManageProperties";
 import AllUsers from "../Pages/Dashboard/Admin/AllUsers";
+import ManageReviews from "../Pages/Dashboard/Admin/ManageReviews";
 
 const router = createBrowserRouter([
     {
@@ -105,6 +106,10 @@ const router = createBrowserRouter([
         {
           path:'/dashboard/users',
           element:<AllUsers></AllUsers>
+        },
+        {
+          path:'/dashboard/manageReviews',
+          element:<ManageReviews></ManageReviews>
         },
       ]
     },
